@@ -1,0 +1,18 @@
+/* src/index.css — Estilos globales que complementan Bootstrap */
+
+:root {
+  --bs-primary: #0d6efd;
+  --color-bg: #f8f9fa;
+  --color-text: #212529;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Transición suave para los enlaces del navbar */
+.nav-link {
+  transition: color 0.2s ease;
+}
