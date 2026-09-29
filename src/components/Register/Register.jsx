@@ -1,14 +1,12 @@
-// src/pages/RegisterPage.jsx
-// Registro de usuario — Jockey Club de Rosario
+// src/components/Register/Register.jsx
 
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles/Auth.css';
+import './Register.scss';
 
 const LOGO_URL =
   'https://tramites.jockeyclubderosario.com.ar/OFICINA_VIRTUAL_PROD_DOCS/JockeyLogo.png';
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
 function getStrength(pwd) {
   let s = 0;
   if (pwd.length >= 8)          s++;
@@ -19,8 +17,7 @@ function getStrength(pwd) {
 }
 const STRENGTH_LABELS = ['', 'Débil', 'Regular', 'Buena', 'Fuerte'];
 
-// ── Componente ────────────────────────────────────────────────────────────────
-function RegisterPage() {
+function Register() {
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -85,20 +82,14 @@ function RegisterPage() {
     <div className="auth-page">
       <div className="auth-card">
 
-        {/* ── Cabecera ── */}
         <header className="auth-header">
-          <img
-            src={LOGO_URL}
-            alt="Jockey Club de Rosario"
-            className="auth-logo"
-          />
+          <img src={LOGO_URL} alt="Jockey Club de Rosario" className="auth-logo" />
           <h1 className="auth-title">Inscripción a Concurso</h1>
           <p className="auth-subtitle">Jockey Club de Rosario</p>
         </header>
 
         <div className="auth-divider" />
 
-        {/* ── Error global ── */}
         {apiError && (
           <div className="auth-alert" role="alert">
             <i className="bi bi-exclamation-circle-fill"></i>
@@ -106,7 +97,6 @@ function RegisterPage() {
           </div>
         )}
 
-        {/* ── Formulario ── */}
         <form onSubmit={handleSubmit} noValidate>
 
           {/* Nombre y Apellido */}
@@ -154,9 +144,7 @@ function RegisterPage() {
 
           {/* Email */}
           <div className="auth-field">
-            <label className="auth-form-label" htmlFor="reg-email">
-              Correo electrónico
-            </label>
+            <label className="auth-form-label" htmlFor="reg-email">Correo electrónico</label>
             <input
               id="reg-email"
               name="email"
@@ -218,9 +206,7 @@ function RegisterPage() {
 
           {/* Confirmar contraseña */}
           <div className={`auth-field ${errors.confirm ? 'auth-field--has-error' : ''}`}>
-            <label className="auth-form-label" htmlFor="reg-confirm">
-              Confirmar contraseña
-            </label>
+            <label className="auth-form-label" htmlFor="reg-confirm">Confirmar contraseña</label>
             <input
               id="reg-confirm"
               name="confirm"
@@ -255,12 +241,7 @@ function RegisterPage() {
             )}
           </div>
 
-          <button
-            id="register-submit-btn"
-            type="submit"
-            className="auth-btn"
-            disabled={loading}
-          >
+          <button id="register-submit-btn" type="submit" className="auth-btn" disabled={loading}>
             {loading
               ? <><span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Registrando...</>
               : 'Crear cuenta'
@@ -268,7 +249,6 @@ function RegisterPage() {
           </button>
         </form>
 
-        {/* ── Pie ── */}
         <div className="auth-footer">
           <div className="auth-footer-divider">o</div>
           <span>
@@ -282,4 +262,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default Register;

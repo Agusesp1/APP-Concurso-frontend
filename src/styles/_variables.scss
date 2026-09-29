@@ -1,0 +1,26 @@
+// src/styles/_variables.scss
+// Variables SCSS globales — paleta Jockey Club de Rosario
+
+// ── Colores ──────────────────────────────────────────────────────────────────
+$navy:       #042751;
+$blue:       #0082ED;
+$soft-blue:  #A4B6DB;
+$white:      #FFFFFF;
+$gray:       #6b7280;
+$border:     #d1dce8;
+$error:      #dc3545;
+$success:    #198754;
+
+// ── Tipografía ────────────────────────────────────────────────────────────────
+$font-base:   'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-size-sm: 0.75rem;
+$font-size-md: 0.9rem;
+$font-size-lg: 1.2rem;
+
+// ── Espaciado ─────────────────────────────────────────────────────────────────
+$radius-card:  12px;
+$radius-input: 7px;
+$radius-btn:   7px;
+
+// ── Sombras ───────────────────────────────────────────────────────────────────
+$shadow-card: 0 20px 60px rgba(0, 0, 0, 0.35);

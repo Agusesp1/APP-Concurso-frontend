@@ -1,19 +1,18 @@
-// src/pages/LoginPage.jsx
-// Inicio de sesión — Jockey Club de Rosario
+// src/components/Login/Login.jsx
 
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles/Auth.css';
+import './Login.scss';
 
 const LOGO_URL =
   'https://tramites.jockeyclubderosario.com.ar/OFICINA_VIRTUAL_PROD_DOCS/JockeyLogo.png';
 
-function LoginPage() {
+function Login() {
   const navigate = useNavigate();
 
-  const [form, setForm]       = useState({ email: '', password: '' });
-  const [error, setError]     = useState('');
-  const [loading, setLoading] = useState(false);
+  const [form, setForm]         = useState({ email: '', password: '' });
+  const [error, setError]       = useState('');
+  const [loading, setLoading]   = useState(false);
   const [showPass, setShowPass] = useState(false);
 
   const handleChange = (e) => {
@@ -30,13 +29,12 @@ function LoginPage() {
     setLoading(true);
     setError('');
     try {
-      // TODO: await api.post('/auth/login', form);
+      // TODO: const { data } = await api.post('/auth/login', form);
+      // localStorage.setItem('token', data.token);
       await new Promise((r) => setTimeout(r, 1200));
       navigate('/dashboard');
     } catch (err) {
-      setError(
-        err.response?.data?.error || 'Credenciales incorrectas. Intentá de nuevo.'
-      );
+      setError(err.response?.data?.error || 'Credenciales incorrectas. Intentá de nuevo.');
     } finally {
       setLoading(false);
     }
@@ -46,20 +44,14 @@ function LoginPage() {
     <div className="auth-page">
       <div className="auth-card">
 
-        {/* ── Cabecera ── */}
         <header className="auth-header">
-          <img
-            src={LOGO_URL}
-            alt="Jockey Club de Rosario"
-            className="auth-logo"
-          />
+          <img src={LOGO_URL} alt="Jockey Club de Rosario" className="auth-logo" />
           <h1 className="auth-title">Inscripción a Concurso</h1>
           <p className="auth-subtitle">Jockey Club de Rosario</p>
         </header>
 
         <div className="auth-divider" />
 
-        {/* ── Error global ── */}
         {error && (
           <div className="auth-alert" role="alert">
             <i className="bi bi-exclamation-circle-fill"></i>
@@ -67,7 +59,6 @@ function LoginPage() {
           </div>
         )}
 
-        {/* ── Formulario ── */}
         <form onSubmit={handleSubmit} noValidate>
 
           <div className="auth-field">
@@ -114,12 +105,7 @@ function LoginPage() {
             </button>
           </div>
 
-          <button
-            id="login-submit-btn"
-            type="submit"
-            className="auth-btn"
-            disabled={loading}
-          >
+          <button id="login-submit-btn" type="submit" className="auth-btn" disabled={loading}>
             {loading
               ? <><span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Ingresando...</>
               : 'Iniciar sesión'
@@ -127,7 +113,6 @@ function LoginPage() {
           </button>
         </form>
 
-        {/* ── Pie ── */}
         <div className="auth-footer">
           <div className="auth-footer-divider">o</div>
           <span>
@@ -141,4 +126,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default Login;
